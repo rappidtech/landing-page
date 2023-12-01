@@ -1,0 +1,75 @@
+{
+    "title": "Tenemos un plan de precios perfecto para ti",
+    "features": [
+        {
+            "free1": "Hasta 4 links", 
+            "free2": "5 plantillas de diseño", 
+            "free3": "Listo en 24 hs",
+            "free4": "Diseño personalizado",
+            "free5": "Sin logo de RAppID Tech",
+            "free6": "Con animaciones",
+            "free7": "Dominio personal",
+            "free8": "Renovación de dominio"
+        },
+        {
+            "basico1": "Hasta 4 links",
+            "basico2": "5 plantillas de diseño",
+            "basico3": "Listo en 24 hs",
+            "basico4": "Diseño personalizado",
+            "basico5": "Sin logo de RAppID Tech",
+            "basico6": "Con animaciones",
+            "basico7": "Dominio personal",
+            "basico8": "Renovación de dominio"
+        }, 
+        {
+            "estandar1": "Sin límite de links",
+            "estandar2": "12 plantillas de diseño",
+            "estandar3": "Listo en 24 hs",
+            "estandar4": "Diseño personalizado",
+            "estandar5": "Sin logo de RAppID Tech",
+            "estandar6": "Con animaciones",
+            "estandar7": "Dominio personal",
+            "estandar8": "Renovación de dominio"
+        }, 
+        {
+            "premium1": "Sin límite de links",
+            "premium2": "12 plantillas de diseño",
+            "premium3": "Listo en 24 hs",
+            "premium4": "Diseño personalizado",
+            "premium5": "Sin logo de RAppID Tech",
+            "premium6": "Con animaciones",
+            "premium7": "Dominio personal",
+            "premium8": "Renovación de dominio"
+        }
+    ],
+    "plans": [
+        {
+            "name": "Gratuito",
+            "price": "0",
+            "priceAnual": "0",    
+            "button": "Comenzar gratis",
+            "numFeatures": 3
+        },
+        {
+            "name": "Básico",
+            "price": "1.900",
+            "priceAnual": "20.500",    
+            "button": "Comenzar gratis",
+            "numFeatures": 3
+        },
+        {
+            "name": "Estándar",
+            "price": "4.300",
+            "priceAnual": "46.400",    
+            "button": "Comenzar gratis",
+            "numFeatures": 6
+        },
+        {
+            "name": "Premium",
+            "price": "6.900",
+            "priceAnual": "74.520",    
+            "button": "Comenzar gratis",
+            "numFeatures": 8
+        }
+    ]
+}
