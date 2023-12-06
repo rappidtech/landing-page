@@ -1,13 +1,13 @@
 {
-  "title": "Landing page template for developers & startups",
-  "text": "Beautifully designed templates using React.js, ant design and styled-components! Save weeks of time and build your landing page in minutes.",
-  "button": [
-    {
-      "title": "Explore"
-    },
-    {
-      "title": "Learn more",
-      "color": "#fff"
-    }
-  ]
+    "title": "Conecta todo en un clic. Tu mundo digital en un solo enlace",
+    "text": "Descubre la forma más elegante de presentar tu mundo digital. Con nuestro enlace personalizado, puedes compartir tu portfolio, redes sociales y mucho más, todo desde un solo lugar. Convierte la complejidad en simplicidad. \n\nEs fácil, es rápido, y es mágico.",
+    "button": [
+        {
+            "title": "Ver DEMO"
+        },
+        {
+            "title": "COMENZAR GRATIS", 
+            "color": "#fff"
+        }
+    ]
 }

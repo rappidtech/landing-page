@@ -5,59 +5,81 @@ import AboutContent from "../../content/AboutContent.json";
 import MissionContent from "../../content/MissionContent.json";
 import ProductContent from "../../content/ProductContent.json";
 import ContactContent from "../../content/ContactContent.json";
+import PlansContent from "../../content/PlansContent.json";
+import MockupsContent from "../../content/MockupsContent.json";
+import MiddleBlock from "../../components/MiddleBlock";
 
-const Contact = lazy(() => import("../../components/ContactForm"));
-const MiddleBlock = lazy(() => import("../../components/MiddleBlock"));
+const CarouselComponent = lazy(() => import("../../components/Carousel"));
+const Plans = lazy(() => import("../../components/Accordion"));
 const Container = lazy(() => import("../../common/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
 const ContentBlock = lazy(() => import("../../components/ContentBlock"));
+const Envolving = lazy(() => import("../../common/Envolving"));
+const Loading = lazy(() => import("../../common/Loading"));
+
 
 const Home = () => {
-  return (
-    <Container>
-      <ScrollToTop />
-      <ContentBlock
-        type="right"
-        title={IntroContent.title}
-        content={IntroContent.text}
-        button={IntroContent.button}
-        icon="developer.svg"
-        id="intro"
-      />
-      <MiddleBlock
-        title={MiddleBlockContent.title}
-        content={MiddleBlockContent.text}
-        button={MiddleBlockContent.button}
-      />
-      <ContentBlock
-        type="left"
-        title={AboutContent.title}
-        content={AboutContent.text}
-        section={AboutContent.section}
-        icon="graphs.svg"
-        id="about"
-      />
-      <ContentBlock
-        type="right"
-        title={MissionContent.title}
-        content={MissionContent.text}
-        icon="product-launch.svg"
-        id="mission"
-      />
-      <ContentBlock
-        type="left"
-        title={ProductContent.title}
-        content={ProductContent.text}
-        icon="waving.svg"
-        id="product"
-      />
-      <Contact
-        title={ContactContent.title}
-        content={ContactContent.text}
-        id="contact"
-      />
-    </Container>
-  );
+    return (
+        <div style={{margin:"0", padding:"0", overflowX:"hidden", width:"100%"}}>
+            <ScrollToTop />
+            <Envolving color="#F9F9F9">
+                <Container>
+                    <ContentBlock
+                        type="left"
+                        title={IntroContent.title}
+                        content={IntroContent.text}
+                        icon="mockup-header.svg"
+                        id="intro"
+                    />
+                </Container>
+            </Envolving>
+            <Envolving color="#E9C0E9">
+                <Container>
+                    <CarouselComponent
+                        title={MockupsContent.title}
+                        content={MockupsContent.carrusel}
+                    />
+                </Container>
+            </Envolving>
+            <Envolving color="#F9F9F9">
+                <Container>
+                    <ContentBlock
+                        type="left"
+                        title={MissionContent.title}
+                        content={MissionContent.text}
+                        icon=""
+                        id="intro"
+                        />
+                </Container>
+            </Envolving>
+
+            <Envolving color="#E9C0E9">
+                <Container>
+                    <MiddleBlock
+                        title={MiddleBlockContent.title}
+                        content={MiddleBlockContent.text}
+                        button={MiddleBlockContent.button}
+                    >
+                    </MiddleBlock>
+                </Container>
+            </Envolving>
+            <Envolving color="#F9F9F9">
+                <Container>
+                    <Plans
+                        title={PlansContent.title}
+                        content={{
+                            title: PlansContent.title,
+                            plans: PlansContent.plans,
+                            features: PlansContent.features,
+                        }}
+                        button={MiddleBlockContent.button}
+                        id="plans"
+                        />
+                </Container>
+            </Envolving>
+
+        </div>
+    );
 };
 
 export default Home;

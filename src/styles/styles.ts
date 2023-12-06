@@ -2,23 +2,10 @@ import { createGlobalStyle } from "styled-components";
 
 export const Styles = createGlobalStyle`
 
-    @font-face {
-        font-family: "Motiva Sans Light";
-        src: url("/fonts/Motiva-Sans-Light.ttf") format("truetype");
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: "Motiva Sans Bold";
-        src: url("/fonts/Motiva-Sans-Bold.ttf") format("truetype");
-        font-style: normal;
-    }
-
-
     body,
     html,
     a {
-        font-family: 'Motiva Sans Light', sans-serif;
+        font-family: 'Inter', sans-serif;
     }
 
 
@@ -29,10 +16,11 @@ export const Styles = createGlobalStyle`
         outline: 0;
         background: #fff;
         overflow-x: hidden;
+        witdh: 100%;
     }
 
     a:hover {
-        color: #18216d;
+        color: #101010;
     }
 
     input,
@@ -47,7 +35,7 @@ export const Styles = createGlobalStyle`
 
         :focus-within {
             background: none;
-            box-shadow: #2e186a 0px 0px 0px 1px;
+            box-shadow: #101010 0px 0px 0px 1px;
         }
     }
 
@@ -57,8 +45,8 @@ export const Styles = createGlobalStyle`
     h4,
     h5,
     h6 {
-        font-family: 'Motiva Sans Bold', serif;
-        color: #18216d;
+        font-family: 'Epilogue', sans-serif;
+        color: #101010;
         font-size: 56px;
         line-height: 1.18;
 
@@ -72,7 +60,7 @@ export const Styles = createGlobalStyle`
     }
 
     p {
-        color: #18216d;
+        color: #101010;
         font-size: 21px;        
         line-height: 1.41;
     }
@@ -84,10 +72,10 @@ export const Styles = createGlobalStyle`
     a {
         text-decoration: none;
         outline: none;
-        color: #2E186A;
+        color: #101010;
 
         :hover {
-            color: #2e186a;
+            color: #A84AC9;
         }
     }
     
