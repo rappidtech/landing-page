@@ -1,3 +1,5 @@
+import { initializeApp } from "firebase/app";
+
 export const config = {
 
     firebaseConfig: {
@@ -10,4 +12,7 @@ export const config = {
         appId: process.env.REACT_APP_FIREBASE_APP_ID
     }
 }
+
+// const app = initializeApp(config.firebaseConfig);
+
 export default config;

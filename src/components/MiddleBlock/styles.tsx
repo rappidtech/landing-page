@@ -23,3 +23,23 @@ export const ContentWrapper = styled("div")`
         max-width: 100%;
     }
 `;
+
+export const Column = styled("div")`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+`;
+
+export const H6 = styled("h6")`
+    font-weight: bold;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #000;
+    text-align: center;
+
+    @media screen and (max-width: 1024px) {
+        font-size: 1.5rem;
+    }
+`;

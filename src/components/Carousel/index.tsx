@@ -1,14 +1,19 @@
+import styled from "styled-components";
 import { Carousel, Row, Col } from 'react-bootstrap';
 import { Button } from "../Button";
 import {
 	Section,
+
 	ItemCarousel,
 	ImgCarousel,
+	TitleSection,
 	TitleCarousel,
 	TextCarousel,
 	StyleCarousel,
 	DataContainer,
 } from './styles';
+import { lazy } from "react";
+const Envolving = lazy(() => import("../../common/Envolving"));
 
 interface CarouselComponentProps {
     title: string;
@@ -24,26 +29,22 @@ function CarouselComponent({title, content} : CarouselComponentProps) {
 
 	return (
 		<Section>
-			<h3>
-				{title}
-			</h3>
-			<Carousel style={{height:"500px"}} className='mb-5' interval={3000} indicators={false} data-bs-theme="dark" >
+			<h3 style={TitleSection}>{title}</h3>
+			<Carousel style={{height:"500px"}}  interval={3000} indicators={false} controls={false} data-bs-theme="dark" >
 				{content.map((item: any, itemId: any) => (
 					<Carousel.Item style={ItemCarousel}>
 						<Row> 
 							<Col md={6} className="order-md-1 order-1 d-flex justify-content-center">
-								<img
-									className='w-100 px-5'
-									style={ImgCarousel}
-									src={item.image}
-									alt="First slide"
+								<ImgCarousel
+									src={`${process.env.PUBLIC_URL}${item.image}`}
+									alt={`Slide ${itemId}`}
 								/>
 							</Col>
 							<Col md={6} className="order-md-2 order-2 d-flex">
 								<div className='ms-4 d-flex' style={DataContainer}>
 									<h6 style={TitleCarousel}>{item.title}</h6>
 									<p style={TextCarousel}>{item.description}</p>
-									<Button >{item.button}</Button>
+									<Button>{item.button}</Button>
 								</div>
 							</Col>
 						</Row> 

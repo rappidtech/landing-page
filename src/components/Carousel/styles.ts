@@ -1,7 +1,13 @@
 import styled, { CSSProp } from "styled-components";
 
 export const Section = styled("section")`
-    padding: 6rem 0;
+    padding: 8rem 0 4rem 0;
+    min-height: 600px;
+
+    @media (max-width: 768px) {
+        padding: 0
+        min-height: 800px;
+    }
 `;
 
 
@@ -15,19 +21,31 @@ export const ItemCarousel : React.CSSProperties = {
     
 }
 
-export const ImgCarousel : React.CSSProperties = {
-    width: "200px",
-    objectFit: "cover",
-    objectPosition: "center",
+export const ImgCarousel = styled("img")`
+    width: 80%;
+
+    @media (max-width: 768px) {
+        width: 90%;
+        min-width: 200px;
+    }
+
+`
+
+export const TitleSection : React.CSSProperties = {
+    fontSize: "1.5rem",
+    fontWeight: "bold",
+    color: '#101010',
 }
 
 export const TitleCarousel : React.CSSProperties = {
-    fontSize: "1.5rem",
+    fontSize: "1rem",
     fontWeight: "bold",
+    color: '#101010',
 }
 
 export const TextCarousel : React.CSSProperties = {
-    fontSize: "1rem",
+    fontSize: "0.8rem",
+    color: '#101010',
 }
 
 export const DataContainer : React.CSSProperties = {

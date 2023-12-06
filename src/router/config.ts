@@ -20,8 +20,20 @@ const routes = [
         component: () => import("../pages/Admin"),
     },
     {
-        path: "/register",
-        component: () => import("../pages/Register"),
+        path: "/registro",
+        component: () => import("../pages/Registro"),
+    },
+    {
+        path: "/verificacion",
+        component: () => import("../pages/Verificacion"),
+    },
+    {
+        path: "/verificada",
+        component: () => import("../pages/Verificada"),
+    },
+    {
+        path: "/welcome",
+        component: () => import("../pages/Welcome"),
     },
 ];
 

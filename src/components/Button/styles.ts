@@ -2,24 +2,25 @@ import styled from "styled-components";
 
 export const StyledButton = styled("button")<any>`
     background: ${(p) => p.color || "rgb(168, 74, 201)"};
-    color: ${(p) => (p.color ? "rgb(168, 74, 201)" : "#fff")};
+    color: ${(p) => p.tcolor || "#fff"};
     font-size: 1rem;
     font-weight: 700;
-    width: 100%;
-    border: 1px solid rgb(168, 74, 201);
+    width: 180px;
+    border: 1px solid ${(p) => p.borderColor || "rgb(168, 74, 201)"};
     border-radius: 4px;
-    padding: 13px 0;
+    padding: 13px 30px;
+    text-wrap: nowrap;
     cursor: pointer;
-    margin-top: 0.625rem;
     max-width: 180px;
     transition: all 0.3s ease-in-out;
     box-shadow: 0 16px 30px rgb(23 31 114 / 10%);
+    
 
     &:hover,
     &:active,
     &:focus {
-        color: #fff;
-        border: 1px solid #9742B4;
-        background-color: #9742B4;
+        color: ${(p) => p.borderColor ? '#A84AC9' : '#fff' } ;
+        border: 1px solid ${(p) => p.borderColor ? '#fff' : "#9742B4" } ;
+        background-color: ${(p) => p.borderColor ? '#fff' : "#9742B4" } ;
     }
 `;

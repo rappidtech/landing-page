@@ -2,12 +2,14 @@ import { StyledButton } from "./styles";
 import { ButtonProps } from "../../common/types";
 
 export const Button = ({
+    borderColor,
+    tcolor,
     color,
     fixedWidth,
     children,
     onClick,
 }: ButtonProps) => (
-    <StyledButton color={color} fixedWidth={fixedWidth} onClick={onClick}>
+    <StyledButton borderColor={borderColor} color={color} tcolor={tcolor} fixedWidth={fixedWidth} onClick={onClick}>
         {children}
     </StyledButton>
 );

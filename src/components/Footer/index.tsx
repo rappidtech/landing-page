@@ -2,12 +2,15 @@ import { Row, Col } from "antd";
 import { withTranslation } from "react-i18next";
 import { SvgIcon } from "../../common/SvgIcon";
 import Container from "../../common/Container";
+import { Button } from "../Button";
+import { Link } from "react-router-dom";
 
 import i18n from "i18next";
 import {
     FooterSection,
     Title,
     NavLink,
+    ButtonLink,
     Extra,
     LogoContainer,
     Para,
@@ -40,7 +43,7 @@ const Footer = ({ t }: any) => {
                 key={src}
                 aria-label={src}
             >
-                <SvgIcon src={src} width="25px" height="25px" />
+                <SvgIcon src={src} width="50px" height="50px" />
             </a>
         );
     };
@@ -51,19 +54,26 @@ const Footer = ({ t }: any) => {
                 <Container>
                     <Row justify="space-between">
                         <Col lg={10} md={10} sm={12} xs={12}>
-                            <Language>{t("Contact")}</Language>
-                            <Large to="/">{t("Tell us everything")}</Large>
+                            <Language>{t("Contacto")}</Language>
                             <Para>
                                 {t(
-                                    `Do you have any question? Feel free to reach out.`,
+                                    `¿Tienes alguna pregunta?`,
                                 )}
                             </Para>
-                            <a href="mailto:l.qqbadze@gmail.com">
-                                <Chat>{t(`Let's Chat`)}</Chat>
+                            <Para>
+                                {t(
+                                    `Contáctanos`,
+                                )}
+                            </Para>
+                            <a target="blank" style={{marginRight:"5px"}} href="mailto:nosotros@rappid.com">
+                                <img width={"35px"} src="./links/img/svg/emailw.svg" alt="" />
+                            </a>
+                            <a target="blank" href="https://api.whatsapp.com/send?phone=543814094843&text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20software">
+                                <img width={"35px"} src="./links/img/svg/whatsappw.svg" alt="" />
                             </a>
                         </Col>
                         <Col lg={8} md={8} sm={12} xs={12}>
-                            <Title>{t("Policy")}</Title>
+                            <Title>{t("Legales")}</Title>
                             <Large to="/" left="true">
                                 {t("Application Security")}
                             </Large>
@@ -72,40 +82,47 @@ const Footer = ({ t }: any) => {
                             </Large>
                         </Col>
                         <Col lg={6} md={6} sm={12} xs={12}>
-                            <Empty />
+                        {/* <Col lg={8} md={8} sm={12} xs={12}> */}
+                            <Title>{t("Enlaces")}</Title>
                             <Large left="true" to="/">
-                                {t("Support Center")}
+                                {t("Home")}
                             </Large>
-                            <Large left="true" to="/">
-                                {t("Customer Support")}
+                            <Large left="true" to="https://rappidtech.com/links/templates">
+                                {t("Templates")}
                             </Large>
+                            <Large left="true" to="https://rappidtech.com/links/planes">
+                                {t("Planes")}
+                            </Large>
+                            {/* <Large left="true" to="/">
+                                {t("Careers & Culture")}
+                            </Large> */}
                         </Col>
                     </Row>
                     <Row justify="space-between">
-                        <Col lg={10} md={10} sm={12} xs={12}>
+                        {/* <Col lg={10} md={10} sm={12} xs={12}>
                             <Empty />
                             <Language>{t("Address")}</Language>
                             <Para>Rancho Santa Margarita</Para>
                             <Para>2131 Elk Street</Para>
                             <Para>California</Para>
-                        </Col>
+                        </Col> */}
                         <Col lg={8} md={8} sm={12} xs={12}>
-                            <Title>{t("Company")}</Title>
+                            {/* <Title>{t("Company")}</Title>
                             <Large left="true" to="/">
-                                {t("About")}
+                                {t("Home")}
                             </Large>
                             <Large left="true" to="/">
-                                {t("Blog")}
+                                {t("Templates")}
                             </Large>
                             <Large left="true" to="/">
-                                {t("Press")}
-                            </Large>
-                            <Large left="true" to="/">
+                                {t("Planes")}
+                            </Large> */}
+                            {/* <Large left="true" to="/">
                                 {t("Careers & Culture")}
-                            </Large>
+                            </Large> */}
                         </Col>
                         <Col lg={6} md={6} sm={12} xs={12}>
-                            <Label htmlFor="select-lang">{t("Language")}</Label>
+                            {/* <Label htmlFor="select-lang">{t("Language")}</Label>
                             <LanguageSwitchContainer>
                                 <LanguageSwitch
                                     onClick={() => handleChange("en")}
@@ -127,7 +144,7 @@ const Footer = ({ t }: any) => {
                                         height="30px"
                                     />
                                 </LanguageSwitch>
-                            </LanguageSwitchContainer>
+                            </LanguageSwitchContainer> */}
                         </Col>
                     </Row>
                 </Container>
@@ -139,10 +156,10 @@ const Footer = ({ t }: any) => {
                         align="middle"
                         style={{ paddingTop: "3rem" }}
                     >
-                        <NavLink to="/">
+                        <NavLink to="https://rappidtech.com/links">
                             <LogoContainer>
                                 <SvgIcon
-                                    src="logo.svg"
+                                    src="logow.svg"
                                     aria-label="homepage"
                                     width="101px"
                                     height="64px"
@@ -151,27 +168,18 @@ const Footer = ({ t }: any) => {
                         </NavLink>
                         <FooterContainer>
                             <SocialLink
-                                href="https://github.com/Adrinlol/create-react-app-adrinlol"
-                                src="github.svg"
+                                href="https://www.instagram.com/rappidtech/"
+                                src="instagramw.svg"
                             />
                             <SocialLink
-                                href="https://twitter.com/Adrinlolx"
-                                src="twitter.svg"
+                                href="https://www.linkedin.com/company/100710215/admin/feed/posts/"
+                                src="linkedinw.svg"
                             />
-                            <SocialLink
-                                href="https://www.linkedin.com/in/lasha-kakabadze/"
-                                src="linkedin.svg"
-                            />
-                            <SocialLink
-                                href="https://medium.com/@lashakakabadze/"
-                                src="medium.svg"
-                            />
-                            <a href="https://www.buymeacoffee.com/adrinlol">
-                                <img
-                                    src="https://img.buymeacoffee.com/button-api/?text=Buy me a pizza&emoji=🍕&slug=adrinlol&button_colour=FF5F5F&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00"
-                                    alt="Buy me a pizza"
-                                />
-                            </a>
+                            <ButtonLink  to="http://rappidtech.com/links/registro">
+                                <Button borderColor="#fff"> 
+                                        Comenzar Gratis
+                                </Button>
+                            </ButtonLink>
                         </FooterContainer>
                     </Row>
                 </Container>

@@ -1,10 +1,20 @@
 import React, { useState } from "react";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider, sendEmailVerification } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGooglePlusG, faFacebookF, faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-
-import { response } from "express";
+import PageContainer from "../../common/Container";
+import { SvgIcon } from "../../common/SvgIcon";
+import {
+    HeaderSection,
+    LogoContainer,
+    Burger,
+    NotHidden,
+    Menu,
+    CustomNavLinkSmall,
+    Label,
+    Outline,
+} from "../Header/styles";
 
 import { 
     Body,
@@ -27,9 +37,27 @@ import {
     Paragraph,
     HiddenButton,
     Title,
+    ButtonAction,
+    ButtonToggle,
+    ButtonToggleHover,
+    BodyMobile,
+    DividerStyle,
+    RemForget,
+    Recordarme,
+    BotonGoogle,
+    SignInButton,
 } from "./styles";
 
+import { Divider } from "antd";
+import PasswordInput from "../PasswordInput";
 
+import {signInWithGoogle,
+    signInWithFacebook,
+    signUpWithMail,
+    signInWithMail,
+    signOutUser,
+    deleteAccount,
+} from "../Auth";
 
 export interface LoginProps {
 
@@ -39,31 +67,56 @@ const LoginPage: React.FunctionComponent<LoginProps> = (props) => {
 
     const auth = getAuth();
     const navigate = useNavigate();
-    const provider = new GoogleAuthProvider();
+
 
     const [authing, setAuthing] = useState(false);
-    const [isActive, setIsActive] = useState(true);
-
+    const [isActive, setIsActive] = useState(false);
+    const [registering, setRegistering] = useState(false)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [username, setUsername] = useState("")
     const [emailError, setEmailError] = useState("")
     const [passwordError, setPasswordError] = useState("")
 
-    const signInWithGoogle = async () => {
-        setAuthing(true);
-        try {
-            await signInWithPopup(auth, provider)
-            .then(response => {
-                console.log(response.user.uid);
-                setAuthing(false);
-                navigate("/");
-            })
-            navigate("/");
-        } catch (error) {   
-            console.log(error);
-            setAuthing(false);
-        }
-    }
+    const handleGoogleLogin = () => {
+        signInWithGoogle().then((result) => {
+            console.log('Google Sign In')
+            console.log(result)
+            navigate('/admin')
+        }).catch((error) => {
+          console.log('Hubo un error')
+        });
+      };
+    
+      const handleFacebookLogin = () => {
+        signInWithFacebook().then((result) => {
+            console.log('Facebook Sign In')
+            console.log(result)
+            navigate('/admin')
+        }).catch((error) => {
+          console.log('Hubo un error')
+        });
+      };
+    
+      const handleEmailSignUp = (email: string, password: string) => {
+        signUpWithMail(email, password).then((result) => {
+            console.log('Email Sign Up')
+            console.log(result)
+            navigate('/verificacion')
+        }).catch((error) => {
+            console.log('Hubo un error')
+        });
+      };
+
+      const handleEmailSignIn = (email: string, password: string) => {
+        signInWithMail(email, password).then((result) => {
+            console.log('Email Sign In')
+            console.log(result)
+            navigate('/admin')
+        }).catch((error) => {
+            console.log('Hubo un error')
+        });
+      }
 
     const handleRegisterClick = () => {
         setIsActive(true);
@@ -73,7 +126,7 @@ const LoginPage: React.FunctionComponent<LoginProps> = (props) => {
         setIsActive(false);
       };
     
-    console.log(isActive);
+    
     return (
         <>  
            <Body>
@@ -82,32 +135,28 @@ const LoginPage: React.FunctionComponent<LoginProps> = (props) => {
                         <Form>
                             <Title>Registro</Title>
                             <SocialIcons>
-                                <SocialAnchor href="#" className="icon"><FontAwesomeIcon style={{color:'#101010', fontSize:'20px'}} icon={faGooglePlusG}/></SocialAnchor>
-                                <SocialAnchor href="#" className="icon"><FontAwesomeIcon style={{color:'#101010', fontSize:'20px'}} icon={faFacebookF}/></SocialAnchor>
-                                <SocialAnchor href="#" className="icon"><FontAwesomeIcon style={{color:'#101010', fontSize:'20px'}} icon={faGithub}/></SocialAnchor>
-                                <SocialAnchor href="#" className="icon"><FontAwesomeIcon style={{color:'#101010', fontSize:'20px'}} icon={faLinkedinIn}/></SocialAnchor>
+                                <SignInButton  onClick={handleGoogleLogin} disabled={authing}><SocialAnchor href="#" className="icon"><img src="./img/svg/google.svg"></img></SocialAnchor></SignInButton>
+                                <SignInButton  onClick={handleFacebookLogin} disabled={authing}><SocialAnchor href="#" className="icon"><img src="./img/svg/face.svg"></img></SocialAnchor></SignInButton>
                             </SocialIcons>
                             <Span>o usa tu mail para registrarte</Span>
-                            <Input type="text" placeholder="Nombre" />
-                            <Input type="email" placeholder="Email" />
-                            <Input type="password" placeholder="Contraseña" />
-                            <Button>Sign Up</Button>
+                            <Input type="text" placeholder="Nombre" value={username} onChange={(e) => setUsername(e.target.value)}/>
+                            <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                            <Input type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} />
+                            <Button onClick={() => handleEmailSignUp(email, password)}>Registrarme</Button>
                         </Form>
                     </FormContainer>
                     <FormContainer style={SignIn(isActive)}>
                         <Form>
                             <Title>Iniciar Sesión con tus redes</Title>
                             <SocialIcons>
-                                <SocialAnchor href="#" className="icon"><FontAwesomeIcon style={{color:'#101010', fontSize:'20px'}} icon={faGooglePlusG}/></SocialAnchor>
-                                <SocialAnchor href="#" className="icon"><FontAwesomeIcon style={{color:'#101010', fontSize:'20px'}} icon={faFacebookF}/></SocialAnchor>
-                                <SocialAnchor href="#" className="icon"><FontAwesomeIcon style={{color:'#101010', fontSize:'20px'}} icon={faGithub}/></SocialAnchor>
-                                <SocialAnchor href="#" className="icon"><FontAwesomeIcon style={{color:'#101010', fontSize:'20px'}} icon={faLinkedinIn}/></SocialAnchor>
+                                <SignInButton  onClick={handleGoogleLogin} disabled={authing}><SocialAnchor href="#" className="icon"><img src="./img/svg/google.svg"></img></SocialAnchor></SignInButton>
+                                <SignInButton  onClick={handleFacebookLogin} disabled={authing}><SocialAnchor href="#" className="icon"><img src="./img/svg/face.svg"></img></SocialAnchor></SignInButton>
                             </SocialIcons>
                             <Span>o puedes usar un mail y contraseña</Span>
-                            <Input type="email" placeholder="Email" />
-                            <Input type="password" placeholder="Contraseña" />
+                            <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <Input type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)}/>
                             <Anchor href="#">¿Olvidaste tu contraseña?</Anchor>
-                            <Button>Iniciar Sesión</Button>
+                            <Button onClick={() => handleEmailSignIn(email, password)}>Iniciar Sesión</Button>
                         </Form>
                     </FormContainer>
                     <ToggleContainer active={isActive}>
@@ -116,7 +165,7 @@ const LoginPage: React.FunctionComponent<LoginProps> = (props) => {
                                 <ToggleLeft active={isActive}> {/*isActive true => mostrar*/}
                                     <Title style={{color: 'white'}}>¿Ya tienes una cuenta?</Title>
                                     <Paragraph style={{color: 'white'}}>Puedes iniciar sesión directamente</Paragraph>
-                                    <Button onClick={handleLoginClick}>
+                                    <Button style={ButtonToggle} onClick={handleLoginClick}>
                                             Iniciar Sesión
                                     </Button>
                                 </ToggleLeft>
@@ -125,7 +174,7 @@ const LoginPage: React.FunctionComponent<LoginProps> = (props) => {
                                 <ToggleRight active={isActive}> 
                                     <Title style={{color: 'white'}}>Hola de nuevo!</Title>
                                     <Paragraph style={{color: 'white'}}>¿Todavía no tienes cuenta? ¡Registrate totalmente gratis!</Paragraph>
-                                    <Button onClick={handleRegisterClick}>
+                                    <Button style={ButtonToggle} onClick={handleRegisterClick}>
                                         Registrarme
                                     </Button>
                                 </ToggleRight>
@@ -134,6 +183,40 @@ const LoginPage: React.FunctionComponent<LoginProps> = (props) => {
                     </ToggleContainer>
                 </Container>
             </Body>
+            <BodyMobile>
+                <PageContainer>
+                    <LogoContainer to="https://rappidtech.com/links" aria-label="homepage">
+                        <SvgIcon src="logo.svg" width="40px" height="60px" />
+                    </LogoContainer>
+                    <Title style={{marginTop:"8vh"}}>
+                        ¡Hola de nuevo!
+                    </Title>
+                    <Span style={{display:"flex", justifyContent:"center"}}>
+                        Ingresa a tu RAppID Links
+                    </Span>
+                    <Form>
+                        <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <PasswordInput value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <RemForget>
+                            <Recordarme>
+                                <input style={{ width: "20px"}} type="checkbox" placeholder="" />
+                                <Span style={{ margin: "0 1rem 0 5px"}}>Recordarme</Span>
+                            </Recordarme>
+                            <Anchor style={{color: '#A84AC9'}} href="#">¿Olvidaste tu contraseña?</Anchor>
+                        </RemForget>
+                        <Button>Iniciar Sesión</Button>
+                        <Divider style={DividerStyle}>o</Divider>
+                        <BotonGoogle onClick={handleGoogleLogin}><img style={{marginRight:"1rem"}} src="./img/svg/google.svg"></img>Continuar con Google</BotonGoogle>
+                        <BotonGoogle onClick={handleFacebookLogin}><img style={{marginRight:"1rem"}} src="./img/svg/face.svg"></img>Continuar con Facebook</BotonGoogle>
+                        <Anchor style={{color: '#A84AC9'}} href="https://rappidtech.com/links/registro">
+                            <Span style={{color:"#6B6B6B", marginRight:"5px"}}>
+                                ¿No tienes una cuenta?
+                            </Span>
+                            Regístrate
+                        </Anchor>
+                    </Form>
+                </PageContainer>
+            </BodyMobile>
         </>
     );
 }

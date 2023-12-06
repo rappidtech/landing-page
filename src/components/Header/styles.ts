@@ -43,19 +43,19 @@ export const ContactWrapper = styled("div")<any>`
 `;
 
 export const Burger = styled("div")`
-    @media only screen and (max-width: 890px) {
+    @media only screen and (max-width: 1015px) {
         display: block;
     }
 
     display: none;
 
     svg {
-        fill: #2e186a;
+        fill: #101010;
     }
 `;
 
 export const NotHidden = styled("div")`
-    @media only screen and (max-width: 890px) {
+    @media only screen and (max-width: 1015px) {
         display: none;
     }
 `;

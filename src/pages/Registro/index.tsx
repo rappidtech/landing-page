@@ -1,6 +1,6 @@
 import { lazy } from "react";
 
-const SignUp = lazy(() => import("../../components/Register"));
+const SignUp = lazy(() => import("../../components/Registro"));
 
 const SignUpFunc = () => {
     return (

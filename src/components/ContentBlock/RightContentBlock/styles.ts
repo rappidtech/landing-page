@@ -39,3 +39,15 @@ export const ButtonWrapper = styled("div")`
         margin-left: 20px;
     }
 `;
+
+export const MinTitle = styled("h6")`
+    font-family: "Epilogue", sans-serif;
+    font-size: 2.5rem;    
+    padding: 0.5rem 0;
+    color: #101010;
+`;
+
+export const MinPara = styled("p")`
+    font-size: 0.8rem;
+    color: #101010
+`;

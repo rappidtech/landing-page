@@ -7,9 +7,11 @@ import PlansContent from "../../content/PlansContent.json";
 const Plans = lazy(() => import("../../components/Accordion"));
 const Container = lazy(() => import("../../common/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
+const Envolving = lazy(() => import("../../common/Envolving"));
 
 const Planes = () => {
     return (
+        <Envolving color="#F9F9F9">
         <Container>
             <ScrollToTop />
             <Plans
@@ -21,8 +23,9 @@ const Planes = () => {
                 }}
                 button={MiddleBlockContent.button}
                 id="plans"
-            />
-        </Container>
+                />
+            </Container>
+        </Envolving>
     );
 };
 

@@ -4,6 +4,8 @@ export interface ContainerProps {
 }
 
 export interface ButtonProps {
+    borderColor?: string;
+    tcolor?: string;
     border?: string;
     color?: string;
     fixedWidth?: boolean;
@@ -36,3 +38,9 @@ export interface validateProps {
     message: string;
     email: string;
 }
+
+export interface EnvolvingProps {
+    color?: string;
+    children: React.ReactNode;
+}
+

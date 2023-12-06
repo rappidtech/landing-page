@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Drawer } from "antd";
 import { withTranslation } from "react-i18next";
@@ -17,8 +17,27 @@ import {
     Span,
 } from "./styles";
 
+import { getAuth, signOut } from "firebase/auth";
+import { signOutUser } from "../Auth";
+import { useNavigate } from "react-router-dom";
+
 const Header = ({ t }: any) => {
     const [visible, setVisibility] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    
+    useEffect(() => {
+        const auth = getAuth();
+        const user = auth.currentUser;
+
+        setIsAuthenticated(user != null);
+    }, []);
+
+    const navigate = useNavigate();
+
+    const HandleSessionClose = () => {
+        signOutUser();
+        navigate("/links");
+    }
 
     const showDrawer = () => {
         setVisibility(!visible);
@@ -48,25 +67,39 @@ const Header = ({ t }: any) => {
                         <Span>{t("Planes")}</Span>
                     </Link>
                 </CustomNavLinkSmall>
-                <CustomNavLinkSmall >
-                    <Link to="/admin">
-                        <Span>{t("Mi Cuenta")}</Span>
-                    </Link>
-                </CustomNavLinkSmall>
-                <CustomNavLinkSmall style={{ width: "180px" }}>
-                    <Link to="/login">
-                        <Span>
-                            <Button color="#fff" >{t("Iniciar Sesión")}</Button>
-                        </Span>
-                    </Link>
-                </CustomNavLinkSmall>
-                <CustomNavLinkSmall style={{ width: "180px" }}>
-                    <Link to="/register">
-                        <Span>
-                            <Button >{t("Registrarse")}</Button>
-                        </Span>
-                    </Link>
-                </CustomNavLinkSmall>
+
+                {isAuthenticated ? (
+
+                    <>
+                        <CustomNavLinkSmall>
+                            <Link to="/admin">
+                                <Span>{t("Admin")}</Span>
+                            </Link>
+                        </CustomNavLinkSmall>
+                        <CustomNavLinkSmall >
+                            <Span onClick={() => HandleSessionClose()}>{t("Cerrar Sesión")}</Span>
+                        </CustomNavLinkSmall>
+                    </>
+
+                ) : (
+                    <>
+                        <CustomNavLinkSmall style={{ width: "180px" }}>
+                            <Link to="/login">
+                                <Span>
+                                    <Button color="#fff" tcolor="#A84AC9" >{t("Iniciar Sesión")}</Button>
+                                </Span>
+                            </Link>
+                        </CustomNavLinkSmall>
+                        <CustomNavLinkSmall style={{ width: "180px" }}>
+                            <Link to="/registro">
+                                <Span>
+                                    <Button >{t("Registrarse")}</Button>
+                                </Span>
+                            </Link>
+                        </CustomNavLinkSmall>
+                    </>
+                )}
+                
             </>
         );
     };
@@ -75,7 +108,7 @@ const Header = ({ t }: any) => {
         <HeaderSection>
             <Container>
                 <Row justify="space-between">
-                    <LogoContainer to="/" aria-label="homepage">
+                    <LogoContainer to="https://rappidtech.com/links" aria-label="homepage">
                         <SvgIcon src="logo.svg" width="101px" height="64px" />
                     </LogoContainer>
                     <NotHidden>
@@ -104,3 +137,4 @@ const Header = ({ t }: any) => {
 };
 
 export default withTranslation()(Header);
+

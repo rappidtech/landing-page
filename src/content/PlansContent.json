@@ -44,28 +44,28 @@
     ],
     "plans": [
         {
-            "name": "Gratuito",
+            "name": "Plan gratuito",
             "price": "0",
             "priceAnual": "0",    
             "button": "Comenzar gratis",
             "numFeatures": 3
         },
         {
-            "name": "Básico",
+            "name": "Plan básico",
             "price": "1.900",
             "priceAnual": "20.500",    
             "button": "Comenzar gratis",
             "numFeatures": 3
         },
         {
-            "name": "Estándar",
+            "name": "Plan estándar",
             "price": "4.300",
             "priceAnual": "46.400",    
             "button": "Comenzar gratis",
             "numFeatures": 6
         },
         {
-            "name": "Premium",
+            "name": "Plan premium",
             "price": "6.900",
             "priceAnual": "74.520",    
             "button": "Comenzar gratis",

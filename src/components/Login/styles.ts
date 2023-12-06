@@ -12,6 +12,7 @@ export const move = keyframes`
 `;
 
 export const Body = styled.div`
+
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -23,6 +24,12 @@ export const Body = styled.div`
   justify-content: center;
   flex-direction: column;
   height: 100vh;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+
+  
 `;
 
 export const Title = styled.h2`
@@ -55,11 +62,18 @@ export const Span = styled.span`
   font-size: 12px;
 `;
   
-  export const Anchor = styled.a`
+export const Anchor = styled.a`
   color: #333;
   font-size: 13px;
   text-decoration: none;
   margin: 15px 0 10px;
+
+  @media (max-width: 300px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
   
 `;
   
@@ -75,6 +89,17 @@ export const Button = styled.button`
   text-transform: uppercase;
   margin-top: 10px;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 70vw;
+    border-radius: 5px;
+    color: #818181;
+    background-color: #BBBBBB;
+    max-width: 400px;
+
+  }
+
+
 `;
   
 export const HiddenButton = styled(Button)`
@@ -103,6 +128,21 @@ export const Input = styled.input`
   border-radius: 8px;
   width: 100%;
   outline: none;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+
+  @media (max-width: 768px) {
+    width: 90vw;
+  
+    &:hover {
+        border: 1px solid #101010;
+
+    }
+
+  }
+
 `;
 
 export const FormContainer = styled.div`
@@ -225,3 +265,95 @@ export const ToggleRight = styled(TogglePanel)<{ active?: boolean }>`
     transform: translateX(300%);
   `}
 `;
+
+
+export const ButtonToggle = {
+  backgroundColor:"#A84AC9", 
+  border:"1px solid #fff"
+
+}
+
+export const ButtonToggleHover = {
+  backgroundColor:"white", 
+}
+
+export const ButtonAction = {
+  
+}
+
+
+// Screen Size < 768px
+
+export const BodyMobile = styled(Body)`
+  display: none;
+  background: #fff;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  margin: 5vh 2vh;
+
+
+  @media (max-width: 768px) {
+    display: flex;
+    max-width: 400px;
+    align-items: center;
+    margin: 20px auto;
+
+  }
+
+`;
+
+export const DividerStyle = {
+  margin: "2rem 0",
+  color: "#CECECE",
+  borderColor: "#CECECE",
+}
+
+export const RemForget = styled.div`
+  width: 90vw;  
+  max-width: 400px;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+
+  @media (max-width:300px) {
+    display: block;
+  }
+
+`;
+
+export const Recordarme = styled.div`
+  display: flex; 
+  align-items: center; 
+  margin-top: 8px;
+  justify-content: center;
+
+`;
+
+
+export const BotonGoogle = styled(Button)`
+  
+  @media (max-width: 768px) {
+    background-color: #fff;
+    color: #101010;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    width: 90vw;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-transform: none;
+    padding: 8px 0;
+  }
+`;
+
+export const SignInButton = styled(Button)`
+  background-color: transparent; 
+  border: none;
+  padding: 0;
+  textTransform: none;
+  margin: 0;
+`

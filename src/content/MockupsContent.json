@@ -4,37 +4,37 @@
         {
             "title": "Crea y personaliza tu propia página de enlaces en solo unos minutos",
             "description": "Crea tu propia página de enlaces en solo unos minutos y personalízala a tu gusto. ¡Es gratis!",
-            "image": "./img/svg/carrusel-item-1.svg",
+            "image": "/img/svg/carrusel-item-1.svg",
             "button": "Probar Gratis"
         },
         {
             "title": "Modelos únicos, diseño exclusivo. Crea tu estilo inédito",
             "description": "Crea tu propia página de enlaces en solo unos minutos y personalízala a tu gusto. ¡Es gratis!",
-            "image": "./img/svg/carrusel-item-2.svg",
+            "image": "/img/svg/carrusel-item-2.svg",
             "button": "Probar Gratis"
         },
         {
             "title": "Aumenta tu visibilidad y haz que descubrirte sea un proceso fácil y fluido para tus seguidores y clientes",
             "description": "Crea tu propia página de enlaces en solo unos minutos y personalízala a tu gusto. ¡Es gratis!",
-            "image": "./img/svg/carrusel-item-3.svg",
+            "image": "/img/svg/carrusel-item-3.svg",
             "button": "Probar Gratis"
         },
         {
             "title": "Haz que tus productos tengan mayor llegada",
             "description": "Crea tu propia página de enlaces en solo unos minutos y personalízala a tu gusto. ¡Es gratis!",
-            "image": "./img/svg/carrusel-item-4.svg",
+            "image": "/img/svg/carrusel-item-4.svg",
             "button": "Probar Gratis"
         },
         {
             "title": "Comparte tu contenido de forma ilimitada y llamativa",
             "description": "Crea tu propia página de enlaces en solo unos minutos y personalízala a tu gusto. ¡Es gratis!",
-            "image": "./img/svg/carrusel-item-5.svg",
+            "image": "/img/svg/carrusel-item-5.svg",
             "button": "Probar Gratis"
         },
         {
             "title": "Simplifica tu presencia online: un enlace para unirlos a todos",
             "description": "Crea tu propia página de enlaces en solo unos minutos y personalízala a tu gusto. ¡Es gratis!",
-            "image": "./img/svg/carrusel-item-6.svg",
+            "image": "/img/svg/carrusel-item-6.svg",
             "button": "Probar Gratis"
         }
 
